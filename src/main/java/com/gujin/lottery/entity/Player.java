@@ -5,6 +5,16 @@ public class Player {
 
     private Integer prizeSign = 0;
 
+    private double rate;
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
     public String getName() {
         return name;
     }

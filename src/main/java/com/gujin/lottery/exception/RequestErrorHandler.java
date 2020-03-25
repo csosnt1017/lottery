@@ -19,6 +19,7 @@ public class RequestErrorHandler extends JsonResult {
      */
     @ExceptionHandler(LotteryException.class)
     public JsonResult handleQSException(LotteryException e) {
+        log.info(e.getMsg());
         return getFailResult(e.getCode(), e.getMsg());
     }
 }

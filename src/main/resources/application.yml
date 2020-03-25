@@ -1,12 +1,8 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /lottery
 spring:
-  redis:
-    host: localhsot
-      port: 6379
-      password: 123456
-      timeout: 60s
-      database: 1
-      lettuce:
-        pool:
-          min-idle: 1
-          max-wait: 60000ms
-        shutdown-timeout: 0
+  rsocket:
+    server:
+      port: 8081

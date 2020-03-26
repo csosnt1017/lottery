@@ -20,6 +20,7 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -68,6 +69,7 @@ public class MySocketServer {
         String url = session.getRequestURI().toString();
         int i = url.lastIndexOf("=");
         String name = url.substring(i + 1);
+        name = URLDecoder.decode(name , "utf-8");
         this.name = name;
         log.info("链接成功......");
         SESSIONS.put(name, this);

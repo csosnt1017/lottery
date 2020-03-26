@@ -46,13 +46,14 @@ public class LotteryUtil {
                 sortRateList.add(random);
                 Collections.sort(sortRateList);
                 int index = sortRateList.indexOf(random);
-                if (index != 0) {
-                    //随机数在最后面则重抽
-                    if (index == sortRateList.size() - 1) {
-                        sortRateList.remove(random);
-                    }else {
+                //随机数在最后面则重抽
+                if (index == sortRateList.size() - 1) {
+                    if (index == 0) {
                         return index;
                     }
+                    sortRateList.remove(random);
+                } else {
+                    return index;
                 }
             }
         }

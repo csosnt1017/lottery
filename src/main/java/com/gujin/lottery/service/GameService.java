@@ -69,6 +69,9 @@ public class GameService {
         rateList.forEach(r -> {
             doubleList.add(r.getRate());
         });
+        if (doubleList.isEmpty()) {
+            return null;
+        }
         Rate rate = rateList.get(LotteryUtil.lottery(doubleList));
         return lotteryMap.get(rate.getId());
     }
@@ -131,7 +134,7 @@ public class GameService {
         Set<String> areadySecond = new HashSet<>();
         Set<String> areadyThird = new HashSet<>();
 
-        for (int i = 0; i < firstAmount; ) {
+        for (int i = areadyFirst.size(); i < firstAmount; ) {
             String randomKey = keyArray[random.nextInt(size)];
             areadyFirst.add(randomKey);
             i = areadyFirst.size();
@@ -141,6 +144,7 @@ public class GameService {
             player.setPrizeSign(PrizeConstant.FIRST);
             firstMap.put(f, player);
         });
+
         //循环完删除保证抽取概率一样
         firstMap.forEach((k, v) -> lotteryMap.remove(k));
         //刷新size和key数组

@@ -73,6 +73,7 @@ public class MySocketServer {
         this.name = name;
         log.info("链接成功......");
         SESSIONS.put(name, this);
+        session.setMaxIdleTimeout(3600000);
         if (!"admin".equals(name)) {
             gameService.joinGame(session.getId(), name);
             MySocketServer admin = SESSIONS.get("admin");
